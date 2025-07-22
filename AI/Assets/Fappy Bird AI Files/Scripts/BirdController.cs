@@ -51,7 +51,7 @@ public class BirdControler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) // on trigger enter
     {
-        if(collision.CompareTag("Pipe")) { // if the collider is a pipe
+        if(collision.CompareTag("Pipe") && didLose == false) { // if the collider is a pipe and we haven't lost
             didLose = true; // the bird lost
             timeWhenLost = Time.time; // and the time we lost was the currect time
         }
