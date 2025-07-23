@@ -16,7 +16,7 @@ public class BirdControler : MonoBehaviour
     [Header("Info about loseing")]
     [SerializeField] private bool didLose = false; // holds info about wheater the bird has lost or not
     // these 2 are serializeable so we can see them in the inspector
-    [SerializeField] private float timeWhenLost = -1; // hold the time when the bird lost 
+    [SerializeField] private float score; // hold the time when the bird lost 
 
     void Start()
     {
@@ -25,9 +25,8 @@ public class BirdControler : MonoBehaviour
     }
 
     void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) { // if the input is the space key
-            Jump(); // we jump
-        }
+        if(didLose == false) score += Time.deltaTime; // if we haven't lost add score to the score
+        gameObject.GetComponent<NeuralNetwork>().SetScore(score);
 
         ChagneBirdColor(); // change the bird color if needed
     }
@@ -51,9 +50,8 @@ public class BirdControler : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) // on trigger enter
     {
-        if(collision.CompareTag("Pipe") && didLose == false) { // if the collider is a pipe and we haven't lost
+        if(collision.CompareTag("Pipe")) { // if the collider is a pipe and we haven't lost
             didLose = true; // the bird lost
-            timeWhenLost = Time.time; // and the time we lost was the currect time
         }
     }
 
@@ -67,6 +65,19 @@ public class BirdControler : MonoBehaviour
 
         if(didLose == false) return -1;
 
-        return timeWhenLost;
+        return score;
+    }
+
+    public void SetDidBirdLose(bool didBirdLose) {
+        // this sets did bird lose to the given value
+        didLose = didBirdLose;
+
+        if(didLose == false) { // if the bird hasn't lost
+            score = -1; // the time when the bird lost is -1
+        }
+    }
+
+    public void SetScore(float newScore) {
+        score = newScore;
     }
 }

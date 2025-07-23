@@ -34,6 +34,11 @@ public class Node
         return bias;
     }
 
+    public void SetBias(float newBias) {
+        // sets a new bias
+        bias = newBias;
+    }
+
     public void AddToBias(float biasToAdd) {
         // this adds a number to the bias
         
