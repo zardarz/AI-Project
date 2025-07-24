@@ -1,4 +1,5 @@
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,7 +9,7 @@ public class NaturalSelector : MonoBehaviour
     [SerializeField] private GameObject creatureToEvolve; // the creature we want to evolve
     [Range(0,20)] [SerializeField] private int creaturesPerGeneration; // how many creatures there will be each generation
     [Range(0,100)] [SerializeField] private float lengthOfEachGeneration;
-    [SerializeField] private int generation; // the current generation
+    [SerializeField] private static int generation; // the current generation
     [SerializeField] private float timeUntilNextGeneration = 1f; // the time until the next generation is made
 
     [SerializeField] private string pathToWeightAndBiases; // this is the file path to the txt file that contains all of the weight and biases
@@ -16,9 +17,13 @@ public class NaturalSelector : MonoBehaviour
     // private info
     private GameObject[] creatures; // all of the creatures that are alive
 
+    [Header("Refrences")]
+    [SerializeField] private TMP_Text generationText;
+
 
     void Start()
     {
+        SetGenerationText(); // set the generation text
         timeUntilNextGeneration = lengthOfEachGeneration; // the time until the next generation is the time for the next generation
 
         creatures = new GameObject[creaturesPerGeneration]; // fill the creature list with nulls
@@ -36,6 +41,10 @@ public class NaturalSelector : MonoBehaviour
         GameObject startingCreature = Instantiate(creatureToEvolve); // make a starting creature so we don't effect the asset
         startingCreature.GetComponent<NeuralNetwork>().LoadWeightsAndBiases(weightAndBiases); // load in the weights and biases for the starting creature
         MakeNewGenerationBasedOn(startingCreature); // make the generation with the starting creature
+    }
+
+    private void SetGenerationText() {
+        generationText.text = "Gen: " + generation;
     }
 
     void Update()
@@ -67,6 +76,8 @@ public class NaturalSelector : MonoBehaviour
         }
 
         DestroyImmediate(selectedCreature); // then we destroy the select creature
+
+        generation += 1; // this is now a new generation
     }
 
     private GameObject GetFitestCreature() {
