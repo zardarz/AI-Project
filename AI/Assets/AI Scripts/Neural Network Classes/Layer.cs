@@ -12,6 +12,11 @@ public class Layer
         return nodes;
     }
 
+    public Node GetNode(int index) { 
+        // returns the node at the given index
+        return nodes[index];
+    }
+
     public int GetAmountOfNodes() {
         // returns the amount of nodes in the layer
         return amountOfNodes;

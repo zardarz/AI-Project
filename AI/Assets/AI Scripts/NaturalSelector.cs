@@ -7,7 +7,7 @@ public class NaturalSelector : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private GameObject creatureToEvolve; // the creature we want to evolve
-    [Range(0,20)] [SerializeField] private int creaturesPerGeneration; // how many creatures there will be each generation
+    [Range(0,50)] [SerializeField] private int creaturesPerGeneration; // how many creatures there will be each generation
     [Range(0,100)] [SerializeField] private float lengthOfEachGeneration;
     [SerializeField] private static int generation; // the current generation
     [SerializeField] private float timeUntilNextGeneration = 1f; // the time until the next generation is made

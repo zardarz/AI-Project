@@ -14,6 +14,8 @@ public class NeuralNetwork : MonoBehaviour
     [Header("Extra Info")]
     [SerializeField] private float score;
 
+    private bool preformingEvents = false; // this will tell if the network is currently preform the events in the output layer
+
     void Awake()
     {
         MakeAllNodes(); // make all of the nodes for the network
@@ -61,10 +63,10 @@ public class NeuralNetwork : MonoBehaviour
         // this will just connect 2 layers with all of the connections they need
 
         for(int fromLayerNodeIndex = 0; fromLayerNodeIndex < fromLayer.GetAmountOfNodes(); fromLayerNodeIndex++) { // go foreach from layer node
-            Node fromLayerNode = fromLayer.GetNodes()[fromLayerNodeIndex]; // get the node
+            Node fromLayerNode = fromLayer.GetNode(fromLayerNodeIndex); // get the node
 
             for(int toLayerNodeIndex = 0; toLayerNodeIndex < toLayer.GetAmountOfNodes(); toLayerNodeIndex++) { // now go for each to layer node
-                Node toLayerNode = toLayer.GetNodes()[toLayerNodeIndex]; // get teh node
+                Node toLayerNode = toLayer.GetNode(toLayerNodeIndex); // get teh node
 
                 MakeConnectionBetween(fromLayerNode, toLayerNode); // make the connection
             }
@@ -73,9 +75,12 @@ public class NeuralNetwork : MonoBehaviour
 
     void Update()
     {
+        preformingEvents = false; // we are now not preforming events
+
         if(gotNewInputs) { // if we have new inputs
             PropagateAllLayers(); // we propagte the activations
             outputLayer.PreformMostActivationEvent(); // and preform the action with the most activation
+            preformingEvents = true; // we are now preforming events
         }
     }
 
@@ -97,7 +102,7 @@ public class NeuralNetwork : MonoBehaviour
 
     private void Propagate(Layer layerToPropate) {
         for(int i = 0; i < layerToPropate.GetNodes().Length; i++) { // go foreach input layer node
-            Node node = layerToPropate.GetNodes()[i]; // get the node
+            Node node = layerToPropate.GetNode(i); // get the node
             List<Connection> connections = node.GetToConnections(); // get the nodes connections
 
             for(int connectionIndex = 0; connectionIndex < connections.Count; connectionIndex++) { // go for each connection
@@ -127,7 +132,7 @@ public class NeuralNetwork : MonoBehaviour
         // we only add it to the connections because the input layer nodes dont affect the activation
 
         for(int inputLayerNodeIndex = 0; inputLayerNodeIndex < inputLayer.GetAmountOfNodes(); inputLayerNodeIndex++) { // go for each input layer node
-            List<Connection> connections = inputLayer.GetNodes()[inputLayerNodeIndex].GetToConnections(); // get the nodes connections
+            List<Connection> connections = inputLayer.GetNode(inputLayerNodeIndex).GetToConnections(); // get the nodes connections
 
             AddWeights(connections, maxAdded);
         }
@@ -168,21 +173,6 @@ public class NeuralNetwork : MonoBehaviour
         }
     }
 
-    public void HasGaveNewInputs() {
-        gotNewInputs = true; // this runs when we have gotten new inputs
-    }
-
-    public void SetScore(float score) {
-        // this is run from the controller of the neural networ
-        this.score = score;
-    }
-
-    public float GetScore() {
-        // this is for the natural slector
-        return score;
-    }
-
-
     public void LoadWeightsAndBiases(string weightAndBiasesString) {
         // this will take a string that contains all of the weights and biases and load then into this network
 
@@ -203,7 +193,7 @@ public class NeuralNetwork : MonoBehaviour
         // starting with the connections from the input layer to the first hidden layer
 
         for(int inputLayerNodeIndex = 0; inputLayerNodeIndex < inputLayer.GetAmountOfNodes(); inputLayerNodeIndex++) { // go for each input layer node
-            Node inputLayerNode = inputLayer.GetNodes()[inputLayerNodeIndex]; // get the node
+            Node inputLayerNode = inputLayer.GetNode(inputLayerNodeIndex); // get the node
             List<Connection> inputLayerNodeConnections = inputLayerNode.GetToConnections(); // get the nodes connections
 
             for(int inputLayerNodeConnectionIndex = 0; inputLayerNodeConnectionIndex < inputLayerNodeConnections.Count; inputLayerNodeConnectionIndex++) { // go for each connection
@@ -258,7 +248,7 @@ public class NeuralNetwork : MonoBehaviour
         // first get all of the weights of the connections from the input layer to the first hidden layer
 
         for(int inputLayerNodeIndex = 0; inputLayerNodeIndex < inputLayer.GetAmountOfNodes(); inputLayerNodeIndex++) { // go foreach input layer node
-            List<Connection> connections = inputLayer.GetNodes()[inputLayerNodeIndex].GetToConnections(); // get all of the connections
+            List<Connection> connections = inputLayer.GetNode(inputLayerNodeIndex).GetToConnections(); // get all of the connections
 
             weightsAndBiases += GetAllWeightsFromConnections(connections); // add all of the weights to the weights and biases
         }
@@ -312,4 +302,33 @@ public class NeuralNetwork : MonoBehaviour
         return biases; // return all of the biases
     }
 
+
+    public void HasGaveNewInputs() {
+        gotNewInputs = true; // this runs when we have gotten new inputs
+    }
+
+    public void SetScore(float score) {
+        // this is run from the controller of the neural networ
+        this.score = score;
+    }
+
+    public float GetScore() {
+        // this is for the natural slector
+        return score;
+    }
+
+    public void AddToScore(float scoreToAdd) {
+        // adds score based on the number provided
+        score += scoreToAdd;
+    }
+
+    public bool isPreformingEvents() {
+        // returns a bool based on if the network is preforming an event
+        return preformingEvents;
+    }
+
+    public OutputLayer GetOutputLayer() {
+        // returns the output layer of this network
+        return outputLayer;
+    }
 }
