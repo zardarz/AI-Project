@@ -240,7 +240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &169252727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +257,9 @@ MonoBehaviour:
   creaturesPerGeneration: 50
   lengthOfEachGeneration: 60
   timeUntilNextGeneration: 1
-  pathToWeightAndBiases: Assets/StickMan Standing AI Files/Weights and Biases/test.txt
+  pathToWeightAndBiases: Assets/StickMan Standing AI Files/Weights and Biases/new
+    best.txt
+  varience: 0.1
   generationText: {fileID: 995825024}
 --- !u!4 &169252728
 Transform:
@@ -360,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 404937196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 1.72, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -490,7 +492,7 @@ Transform:
   m_GameObject: {fileID: 478617954}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -11.1, z: 0}
+  m_LocalPosition: {x: 0, y: -8.761425, z: 0}
   m_LocalScale: {x: 575.78, y: 17.52285, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

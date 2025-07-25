@@ -14,6 +14,8 @@ public class NaturalSelector : MonoBehaviour
 
     [SerializeField] private string pathToWeightAndBiases; // this is the file path to the txt file that contains all of the weight and biases
 
+    [Range(0,1)] [SerializeField] private float varience; // the amount of varience in the sim
+
     // private info
     private GameObject[] creatures; // all of the creatures that are alive
 
@@ -72,7 +74,7 @@ public class NaturalSelector : MonoBehaviour
             GameObject creature = creatures[i]; // get the selected creature
 
             creature.GetComponent<NeuralNetwork>().AddWeightsAndBias(weightAndBiasToAdd); // mutate the creature
-            weightAndBiasToAdd += 1f; // increment the weight and bias to add 
+            weightAndBiasToAdd += varience; // increment the weight and bias to add 
         }
 
         DestroyImmediate(selectedCreature); // then we destroy the select creature

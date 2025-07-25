@@ -15,7 +15,7 @@ public class StickManAIScoreInterpreter : MonoBehaviour
 
     void Update()
     {
-        neuralNetwork.AddToScore(head.transform.position.y); // we want the network to learn to balence so we want its y position to be high
+        neuralNetwork.AddToScore(head.transform.position.y - 2f); // we want the network to learn to balence so we want its y position to be high
 
         string colliderLayer = LayerMask.LayerToName(Physics2D.OverlapCircle(head.transform.position, 1).gameObject.layer); // conver the collided object to the layer name
 
