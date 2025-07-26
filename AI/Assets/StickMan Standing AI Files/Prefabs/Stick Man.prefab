@@ -724,10 +724,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torsoRb: {fileID: 7394311830457291049}
   waistRb: {fileID: 806823892464871378}
-  rightArmRb: {fileID: 0}
-  rightForearmRb: {fileID: 0}
-  leftArmRb: {fileID: 0}
-  leftForearmRb: {fileID: 0}
+  rightArmRb: {fileID: 3102759018553914268}
+  rightForearmRb: {fileID: 8310071943973774265}
+  leftArmRb: {fileID: 74136773964147580}
+  leftForearmRb: {fileID: 3589091458691478915}
   rightThighRb: {fileID: 8897166768338286702}
   rightShinRb: {fileID: 83284916978917462}
   leftThighRb: {fileID: 5657262287698001134}
@@ -749,10 +749,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   torso: {fileID: 6209526815792323843}
   waist: {fileID: 4163593065685920412}
-  rightArm: {fileID: 0}
-  rightForearm: {fileID: 0}
-  leftArm: {fileID: 0}
-  leftForearm: {fileID: 0}
+  rightArm: {fileID: 8180966084148133655}
+  rightForearm: {fileID: 8121746402241357933}
+  leftArm: {fileID: 1897022602633347881}
+  leftForearm: {fileID: 6993151118252187856}
   rightThigh: {fileID: 270512290316558706}
   rightShin: {fileID: 7749518637406671225}
   leftThigh: {fileID: 5411712537715535669}
