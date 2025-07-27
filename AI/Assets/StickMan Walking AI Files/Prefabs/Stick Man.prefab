@@ -733,8 +733,8 @@ MonoBehaviour:
   leftThighRb: {fileID: 5657262287698001134}
   leftShinRb: {fileID: 2281996199741448063}
   neuralNetwork: {fileID: 3261680201784770966}
-  minTorque: -5
-  maxTorque: 5
+  minTorque: -2.5
+  maxTorque: 2.5
 --- !u!114 &636830661439185636
 MonoBehaviour:
   m_ObjectHideFlags: 0
