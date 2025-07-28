@@ -8,13 +8,6 @@ public class StickManAIControler : MonoBehaviour
     [SerializeField] private Rigidbody2D torsoRb;
     [SerializeField] private Rigidbody2D waistRb;
 
-    [SerializeField] private Rigidbody2D rightArmRb;
-    [SerializeField] private Rigidbody2D rightForearmRb;
-
-    [SerializeField] private Rigidbody2D leftArmRb;
-    [SerializeField] private Rigidbody2D leftForearmRb;
-
-
     [SerializeField] private Rigidbody2D rightThighRb;
     [SerializeField] private Rigidbody2D rightShinRb;
     
@@ -50,18 +43,11 @@ public class StickManAIControler : MonoBehaviour
         AddTorqueToTorso(Mathf.Clamp(outputLayer.GetNode(0).GetActivation(), minTorque, maxTorque)); // add torque to each body part while clamping it based on the activation of the corresponding node in the output layer
         AddTorqueToWaist(Mathf.Clamp(outputLayer.GetNode(1).GetActivation(), minTorque, maxTorque));
 
-        AddTorqueToRightArm(Mathf.Clamp(outputLayer.GetNode(2).GetActivation(), minTorque, maxTorque));
-        AddTorqueToRightForearm(Mathf.Clamp(outputLayer.GetNode(3).GetActivation(), minTorque, maxTorque));
+        AddTorqueToRightThigh(Mathf.Clamp(outputLayer.GetNode(2).GetActivation(), minTorque, maxTorque));
+        AddTorqueToRightShin(Mathf.Clamp(outputLayer.GetNode(3).GetActivation(), minTorque, maxTorque));
 
-        AddTorqueToLeftArm(Mathf.Clamp(outputLayer.GetNode(4).GetActivation(), minTorque, maxTorque));
-        AddTorqueToLeftForearm(Mathf.Clamp(outputLayer.GetNode(5).GetActivation(), minTorque, maxTorque));
-
-
-        AddTorqueToRightThigh(Mathf.Clamp(outputLayer.GetNode(6).GetActivation(), minTorque, maxTorque));
-        AddTorqueToRightShin(Mathf.Clamp(outputLayer.GetNode(6).GetActivation(), minTorque, maxTorque));
-
-        AddTorqueToLeftThigh(Mathf.Clamp(outputLayer.GetNode(7).GetActivation(), minTorque, maxTorque));
-        AddTorqueToLeftShin(Mathf.Clamp(outputLayer.GetNode(9).GetActivation(), minTorque, maxTorque));
+        AddTorqueToLeftThigh(Mathf.Clamp(outputLayer.GetNode(4).GetActivation(), minTorque, maxTorque));
+        AddTorqueToLeftShin(Mathf.Clamp(outputLayer.GetNode(5).GetActivation(), minTorque, maxTorque));
     }
 
 
@@ -72,23 +58,6 @@ public class StickManAIControler : MonoBehaviour
     private void AddTorqueToWaist(float torqueStrength) {
         waistRb.AddTorque(torqueStrength);
     }
-
-    private void AddTorqueToRightArm(float torqueStrength) {
-    rightArmRb.AddTorque(torqueStrength);
-    }
-
-    private void AddTorqueToRightForearm(float torqueStrength) {
-        rightForearmRb.AddTorque(torqueStrength);
-    }
-
-    private void AddTorqueToLeftArm(float torqueStrength) {
-        leftArmRb.AddTorque(torqueStrength);
-    }
-
-    private void AddTorqueToLeftForearm(float torqueStrength) {
-        leftForearmRb.AddTorque(torqueStrength);
-    }
-
 
     private void AddTorqueToRightThigh(float torqueStrength) {
         rightThighRb.AddTorque(torqueStrength);
