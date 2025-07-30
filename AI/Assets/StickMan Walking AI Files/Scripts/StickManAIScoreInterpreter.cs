@@ -6,15 +6,18 @@ public class StickManAIScoreInterpreter : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private NeuralNetwork neuralNetwork; // the network of that the score we will change
 
-    private GameObject head; // the head of the stick man
+    [SerializeField] private GameObject torso; // the head of the stick man
 
-    void Start()
-    {
-        head = transform.GetChild(0).gameObject; // get the head of the stick man
-    }
+    private bool hasHitGround = false; // if he has hit the ground we no longer count his score
 
     void Update()
     {
-        neuralNetwork.AddToScore(head.transform.position.x); // we want the network to learn to walk so we reward it if it is going to the right
+        if(hasHitGround == false) { // if he has not hit the ground we reward him with his x velocity
+        }
+        neuralNetwork.AddToScore(torso.GetComponent<Rigidbody2D>().velocity.x); // we want the AI to lear to go to the right quickly so we reward it is torso x velocity
+    }
+
+    public void StickmanHasHitGround() {
+        hasHitGround = true;
     }
 }

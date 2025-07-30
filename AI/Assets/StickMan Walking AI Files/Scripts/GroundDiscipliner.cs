@@ -16,7 +16,7 @@ public class GroundDiscipliner : MonoBehaviour
         GameObject stickmanGO = collision.transform.root.gameObject;
 
         if (stickmanGO.name == "Stick Man(Clone)(Clone)") { // if it is not the right or left shin and the top parent is called stick man
-            stickmanGO.GetComponent<NeuralNetwork>().SetScore(float.NegativeInfinity); // we punish him a lot
+            stickmanGO.GetComponent<StickManAIScoreInterpreter>().StickmanHasHitGround(); // he has hit the ground
         }
     }
 }

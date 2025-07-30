@@ -131,6 +131,8 @@ public class NeuralNetwork : MonoBehaviour
         // first the input layer
         // we only add it to the connections because the input layer nodes dont affect the activation
 
+        if(maxAdded == 0) print("aadfjfjkfflsajflkdas");
+
         for(int inputLayerNodeIndex = 0; inputLayerNodeIndex < inputLayer.GetAmountOfNodes(); inputLayerNodeIndex++) { // go for each input layer node
             List<Connection> connections = inputLayer.GetNode(inputLayerNodeIndex).GetToConnections(); // get the nodes connections
 

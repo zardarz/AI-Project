@@ -67,7 +67,7 @@ public class NaturalSelector : MonoBehaviour
             DestroyImmediate(creatures[i]);
         }
 
-        float weightAndBiasToAdd = 0; // this will keep track of the weight and biases we should add to each creature
+        float weightAndBiasToAdd = 0f; // this will keep track of the weight and biases we should add to each creature
 
         for(int i = 0; i < creatures.Length; i++) { // go for each creature
             creatures[i] = Instantiate(selectedCreature); // make the element be a copy of the selected creature
