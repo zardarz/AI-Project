@@ -156,7 +156,7 @@ MonoBehaviour:
   lengthOfEachGeneration: 15
   timeUntilNextGeneration: 1
   pathToWeightAndBiases: Assets/Crawling Animal AI Files/Weights and Biases/test.txt
-  varience: 1
+  varience: 0.1
   generationText: {fileID: 1924218166}
 --- !u!4 &224692296
 Transform:
@@ -251,7 +251,7 @@ Transform:
   m_GameObject: {fileID: 1046581613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.52, z: 0}
+  m_LocalPosition: {x: -5.85, y: 2.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

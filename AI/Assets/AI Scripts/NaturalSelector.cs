@@ -1,4 +1,6 @@
+using System;
 using System.IO;
+using System.Runtime.ExceptionServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -80,7 +82,8 @@ public class NaturalSelector : MonoBehaviour
         // this will return the creature that had the most score
 
         GameObject fitestCreature = creatures[0]; // container for the fitest creature
-        float fitestCreatureScore = fitestCreature.GetComponent<NeuralNetwork>().GetScore(); // the score of the fitest creature
+        NeuralNetwork fitestCreatureNeuralNetwork = fitestCreature.GetComponent<NeuralNetwork>(); // get the neural network of the fitest creature
+        float fitestCreatureScore = fitestCreatureNeuralNetwork.GetScore(); // the score of the fitest creature
 
         for(int i = 0; i < creatures.Length; i++) { // go for each creature
             GameObject creature = creatures[i]; // get the creature
@@ -88,6 +91,7 @@ public class NaturalSelector : MonoBehaviour
 
             if(creatureScore > fitestCreatureScore) { // if this creatures score is higher than the fitest creatures score
                 fitestCreature = creature; // then the fitest creature is this creature
+                fitestCreatureScore = creatureScore;// and the fittest score is this creature's score
             }
         }
 

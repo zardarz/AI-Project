@@ -240,6 +240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 8292479449941527983}
   neuralNetwork: {fileID: 1096377487403773185}
+  maxSpeed: 0.1
 --- !u!114 &5196162017818350132
 MonoBehaviour:
   m_ObjectHideFlags: 0
