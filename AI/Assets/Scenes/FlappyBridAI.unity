@@ -1016,6 +1016,7 @@ MonoBehaviour:
   lengthOfEachGeneration: 30
   timeUntilNextGeneration: 0
   pathToWeightAndBiases: Assets/Fappy Bird AI Files/txt Weights and Biases/Best.txt
+  varience: 1
   generationText: {fileID: 1955697128}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

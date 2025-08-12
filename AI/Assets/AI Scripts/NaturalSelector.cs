@@ -63,10 +63,6 @@ public class NaturalSelector : MonoBehaviour
     private void MakeNewGenerationBasedOn(GameObject selectedCreature) {
         // this will make new creatures that mutaded from the selected creature
 
-        for(int i = 0; i < creatures.Length; i++) { // first we destroy all of the previous creatures
-            DestroyImmediate(creatures[i]);
-        }
-
         float weightAndBiasToAdd = 0f; // this will keep track of the weight and biases we should add to each creature
 
         for(int i = 0; i < creatures.Length; i++) { // go for each creature
@@ -76,8 +72,6 @@ public class NaturalSelector : MonoBehaviour
             creature.GetComponent<NeuralNetwork>().AddWeightsAndBias(weightAndBiasToAdd); // mutate the creature
             weightAndBiasToAdd += varience; // increment the weight and bias to add 
         }
-
-        DestroyImmediate(selectedCreature); // then we destroy the select creature
 
         generation += 1; // this is now a new generation
     }

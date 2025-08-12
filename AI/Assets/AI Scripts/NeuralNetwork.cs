@@ -25,7 +25,7 @@ public class NeuralNetwork : MonoBehaviour
     private void MakeAllNodes() {
         inputLayer.MakeNodes(); // make the input layer nodes
 
-        for(int i = 0; i < hiddenLayers.Count; i++) { // make the hidden layer nodes
+        for(int i = 0; i < hiddenLayers.Count; i++) { // make the hidden layer node 
             hiddenLayers[i].MakeNodes();
         }
 
@@ -131,8 +131,6 @@ public class NeuralNetwork : MonoBehaviour
         // first the input layer
         // we only add it to the connections because the input layer nodes dont affect the activation
 
-        if(maxAdded == 0) print("aadfjfjkfflsajflkdas");
-
         for(int inputLayerNodeIndex = 0; inputLayerNodeIndex < inputLayer.GetAmountOfNodes(); inputLayerNodeIndex++) { // go for each input layer node
             List<Connection> connections = inputLayer.GetNode(inputLayerNodeIndex).GetToConnections(); // get the nodes connections
 
@@ -161,7 +159,9 @@ public class NeuralNetwork : MonoBehaviour
         for(int nodeIndex = 0; nodeIndex < nodes.Length; nodeIndex++) { // go for each connection
             Node node = nodes[nodeIndex]; // get the connection
 
-            node.AddToBias(Random.Range(-maxAdded, maxAdded)); // add the weight
+            float biasToAdd = Random.Range(-maxAdded, maxAdded);
+
+            node.AddToBias(biasToAdd); // add the weight
         }
     }
 
@@ -171,7 +171,9 @@ public class NeuralNetwork : MonoBehaviour
         for(int connectionIndex = 0; connectionIndex < connections.Count; connectionIndex++) { // go for each connection
             Connection connection = connections[connectionIndex]; // get the connection
 
-            connection.AddToWeight(Random.Range(-maxAdded, maxAdded)); // add the weight
+            float weightToAdd = Random.Range(-maxAdded, maxAdded);
+
+            connection.AddToWeight(weightToAdd); // add the weight
         }
     }
 
@@ -214,6 +216,7 @@ public class NeuralNetwork : MonoBehaviour
 
             for(int hiddenLayerNodeIndex = 0; hiddenLayerNodeIndex < hiddenLayerNodes.Length; hiddenLayerNodeIndex++) { // go for each node
                 Node hiddenLayerNode = hiddenLayerNodes[hiddenLayerNodeIndex]; // get the node
+
                 hiddenLayerNode.SetBias(weightsAndBiaes[weightsAndBiaesIndex]); // set the bias
                 weightsAndBiaesIndex++; // increment the weights and biases index
             }
