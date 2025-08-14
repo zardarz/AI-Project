@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,10 +17,16 @@ public class NeuralNetwork : MonoBehaviour
 
     private bool preformingEvents = false; // this will tell if the network is currently preform the events in the output layer
 
+    [SerializeField] private string pathToWeightsAndBiases; // this will provide a path to the weights and biases for testing
+
     void Awake()
     {
         MakeAllNodes(); // make all of the nodes for the network
         MakeAllConnections(); // make all of the network connections
+
+        if(!pathToWeightsAndBiases.Equals("")) { // if the path to the weight and biases is not nothing
+            LoadWeightsAndBiases(File.ReadAllText(pathToWeightsAndBiases)); // we load them
+        }
     }
 
     private void MakeAllNodes() {
