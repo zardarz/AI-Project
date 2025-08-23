@@ -22,7 +22,7 @@ public class AnimalController : MonoBehaviour
     void Update()
     {
         if(neuralNetwork.isPreformingEvents()) { // if the neural network is preforming the events
-            MoveAnimal(); // we move the animal
+            //MoveAnimal(); // we move the animal
         }
     }
 
@@ -32,5 +32,17 @@ public class AnimalController : MonoBehaviour
         rb.MovePosition(rb.position + (Vector2) transform.up * Mathf.Clamp(outputLayer.GetNode(0).GetActivation(), -maxSpeed, maxSpeed)); // move the animal forward based on the output of the first node
 
         rb.MoveRotation(rb.rotation + Mathf.Clamp(outputLayer.GetNode(1).GetActivation(), -maxTurnSpeed, maxTurnSpeed)); // rotate the animal based on the output of it
+    }
+
+    public void TurnLeft() {
+        rb.MoveRotation(rb.rotation - maxTurnSpeed); // make the animal turn left
+    }
+
+    public void TurnRight() {
+        rb.MoveRotation(rb.rotation + maxTurnSpeed); // make the animal turn right
+    }
+
+    public void MoveForward() {
+        rb.MovePosition(rb.position + (Vector2) transform.up * maxSpeed); // make the animal move forward
     }
 }

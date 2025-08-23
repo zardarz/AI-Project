@@ -1,6 +1,5 @@
 using System;
 using System.IO;
-using System.Runtime.ExceptionServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -36,7 +35,7 @@ public class NaturalSelector : MonoBehaviour
         if(!File.Exists(pathToWeightAndBiases)) { // if it doesn't 
             File.WriteAllText(pathToWeightAndBiases, ""); // we make the file to the path and fill it with nothing
 
-            MakeNewGenerationBasedOn(Instantiate(creatureToEvolve)); // and we make the new generation based on the untrained creature
+            MakeNewGenerationBasedOn(creatureToEvolve); // and we make the new generation based on the untrained creature
             return; // and we dont do the rest
         }
         
@@ -65,7 +64,7 @@ public class NaturalSelector : MonoBehaviour
     private void MakeNewGenerationBasedOn(GameObject selectedCreature) {
         // this will make new creatures that mutaded from the selected creature
 
-        float weightAndBiasToAdd = 0f; // this will keep track of the weight and biases we should add to each creature
+        float weightAndBiasToAdd = 1f; // this will keep track of the weight and biases we should add to each creature
 
         for(int i = 0; i < creatures.Length; i++) { // go for each creature
             creatures[i] = Instantiate(selectedCreature); // make the element be a copy of the selected creature

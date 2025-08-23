@@ -155,7 +155,7 @@ MonoBehaviour:
   creaturesPerGeneration: 50
   lengthOfEachGeneration: 15
   timeUntilNextGeneration: 1
-  pathToWeightAndBiases: Assets/Crawling Animal AI Files/Weights and Biases/movingtarget.txt
+  pathToWeightAndBiases: Assets/Crawling Animal AI Files/Weights and Biases/test.txt
   varience: 1
   generationText: {fileID: 1924218166}
 --- !u!4 &224692296
@@ -266,7 +266,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1046581613}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 6d660d59b095842babbe83d3bef6de8c, type: 2}
   m_CullingMode: 0

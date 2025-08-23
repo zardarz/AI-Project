@@ -162,6 +162,7 @@ public class NeuralNetwork : MonoBehaviour
     }
 
     private void AddBiases(Node[] nodes, float maxAdded) {
+        print(maxAdded);
 
         for(int nodeIndex = 0; nodeIndex < nodes.Length; nodeIndex++) { // go for each connection
             Node node = nodes[nodeIndex]; // get the connection
